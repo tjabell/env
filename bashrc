@@ -110,7 +110,11 @@ alias scu='systemctl --user'
 if [[ -a ~/.bash-git-prompt/gitprompt.sh ]]; then source ~/.bash-git-prompt/gitprompt.sh; fi
 if [[ -a ~/.git-completion.bash ]]; then source ~/.git-completion.bash; fi
 
+# Ruby gem in bin path
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 man() {
     env LESS_TERMCAP_mb=$'\E[01;31m' \
@@ -132,3 +136,4 @@ alias mosheasy='mosh --ssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKey
 alias workin='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No -Y'
 alias makepirate='echo -e "\xE2\x98\xA0"'
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+alias tmux='TERM=xterm-256color tmux'

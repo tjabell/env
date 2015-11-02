@@ -1,0 +1,19 @@
+[user]
+	email = trevor.abell@parsus.com
+	name = Trevor Abell
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr, %cn)%Creset' --abbrev-commit --date=relative
+	hist = log --graph --pretty=format:'%h %ad | %s%d [%an]' --date=short
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	amend = commit --amend -C HEAD
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+[push]
+	default = simple
+[merge]
+	tool = ediff
+[mergetool.ediff]
+    cmd = emacs --eval \"(progn (defun ediff-write-merge-buffer () (let ((file ediff-merge-store-file)) (set-buffer ediff-buffer-C) (write-region (point-min) (point-max) file) (message \\\"Merge buffer saved in: %s\\\" file) (set-buffer-modified-p nil) (sit-for 1)))  (setq ediff-quit-hook 'kill-emacs ediff-quit-merge-hook 'ediff-write-merge-buffer) (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\"))\"
