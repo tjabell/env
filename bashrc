@@ -103,6 +103,9 @@ alias la='ll -A'           #  Show hidden files.
 alias tree='tree -Csuh'    #  Nice alternative to 'recursive ls' ...
 
 export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export TERM=xterm-256color
+
 alias jc='journalctl --user'
 alias sc='systemctl'
 alias scu='systemctl --user'
@@ -135,5 +138,4 @@ alias ssh-ec2='ssh -i ~/.ssh/testserverpair.pem ec2-user@ec2-testserver'
 alias mosheasy='mosh --ssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No"'
 alias workin='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No -Y'
 alias makepirate='echo -e "\xE2\x98\xA0"'
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 alias tmux='TERM=xterm-256color tmux'
