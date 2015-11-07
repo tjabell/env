@@ -113,10 +113,12 @@ alias scu='systemctl --user'
 if [[ -a ~/.bash-git-prompt/gitprompt.sh ]]; then source ~/.bash-git-prompt/gitprompt.sh; fi
 if [[ -a ~/.git-completion.bash ]]; then source ~/.git-completion.bash; fi
 
-# Ruby gem in bin path
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+if which ruby>/dev/null && which gem>/dev/null; then
+    # make idempotent by checking path contains gem dir already
+    if ruby -rubygems -e 'exit(!ENV["PATH"].include?(Gem.user_dir))'; then
+        PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    fi
 fi
 
 man() {
@@ -134,7 +136,6 @@ alias gru='git remote update'
 alias gru='git remote update'
 alias ssheasy='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No'
 alias scpeasy='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No'
-alias ssh-ec2='ssh -i ~/.ssh/testserverpair.pem ec2-user@ec2-testserver'
 alias mosheasy='mosh --ssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No"'
 alias workin='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No -Y'
 alias makepirate='echo -e "\xE2\x98\xA0"'
