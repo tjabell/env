@@ -106,8 +106,8 @@ export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export TERM=xterm-256color
 
-alias jc='journalctl --user'
 alias sc='systemctl'
+alias jc='journalctl --user'
 alias scu='systemctl --user'
 
 if [[ -a ~/.bash-git-prompt/gitprompt.sh ]]; then source ~/.bash-git-prompt/gitprompt.sh; fi
