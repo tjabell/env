@@ -1,0 +1,3 @@
+source ~/.dnx/dnvm/dnvm.sh 
+alias cda='cd /home/trevor/source/acdhh/'
+export DISPLAY=:0
