@@ -140,3 +140,4 @@ alias mosheasy='mosh --ssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKey
 alias workin='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No -Y'
 alias makepirate='echo -e "\xE2\x98\xA0"'
 alias tmux='TERM=xterm-256color tmux'
+alias mcls='machinectl list-images'
