@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-git pull ~/env/
-git pull ~/emacs/
-sh ~/emacs/run-packages.sh
+git -C /home/trevor/env/ pull
+git -C /home/trevor/emacs/ pull
+sh /home/trevor/emacs/run-packages.sh
 
