@@ -6,5 +6,5 @@ ln -s ~/env/tmux.conf ~/.tmux.conf
 rm ~/.gitconfig
 ln -s ~/env/gitconfig ~/.gitconfig
 git clone https://tjabell@github.com/tjabell/emacs.git ~/emacs
-~/emacs/run-packages.sh
+sh ~/emacs/run-packages.sh
 
