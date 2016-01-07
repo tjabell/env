@@ -1,0 +1,4 @@
+source ~/.dnx/dnvm/dnvm.sh
+eval $(thefuck --alias)
+alias cda='cd /home/trevor/source/acdhh/'
+export DISPLAY=:0
