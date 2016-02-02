@@ -7,4 +7,6 @@ rm ~/.gitconfig
 ln -s ~/env/gitconfig ~/.gitconfig
 git clone https://tjabell@github.com/tjabell/emacs.git ~/emacs
 
-
+# Enable user's emacs.service 
+cp ~/emacs/emacs.service ~/.config/systemd/user/
+systemctl --user daemon-reload
