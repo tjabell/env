@@ -143,7 +143,7 @@ alias ssheasy='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No'
 alias scpeasy='scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No'
 alias mosheasy='mosh --ssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No"'
 alias workin='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No -Y'
-alias makepirate='echo -e "\xE2\x98\xA0"'
+alias printpirate='echo -e "\xE2\x98\xA0"'
 alias tmux='TERM=xterm-256color tmux'
 alias mcls='machinectl list-images'
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo

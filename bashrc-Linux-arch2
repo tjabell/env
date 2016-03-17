@@ -1,0 +1,2 @@
+PATH=/usr/local/Qt-5.6.0/bin:$PATH
+export PATH
