@@ -148,3 +148,4 @@ alias tmux='TERM=xterm-256color tmux'
 alias mcls='machinectl list-images'
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
+alias emacsq='emacs -Q -nw'
