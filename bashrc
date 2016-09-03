@@ -149,3 +149,5 @@ alias mcls='machinectl list-images'
 # http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
 alias sudo='sudo '
 alias emacsq='emacs -Q -nw'
+alias se='scu start emacs'
+
