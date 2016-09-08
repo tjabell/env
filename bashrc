@@ -150,4 +150,4 @@ alias mcls='machinectl list-images'
 alias sudo='sudo '
 alias emacsq='emacs -Q -nw'
 alias se='scu start emacs'
-
+alias mcs='sudo machinectl start '
