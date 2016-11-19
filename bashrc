@@ -160,3 +160,16 @@ alias sudo='sudo '
 alias emacsq='emacs -Q -nw'
 alias se='scu start emacs'
 alias mcs='sudo machinectl start '
+
+# mkcd function - creates a directory if it doesn't exist and cd's into it
+mkcd () {
+  case "$1" in
+    */..|*/../) cd -- "$1";; # that doesn't make any sense unless the directory already exists
+    /*/../*) (cd "${1%/../*}/.." && mkdir -p "./${1##*/../}") && cd -- "$1";;
+    /*) mkdir -p "$1" && cd "$1";;
+    */../*) (cd "./${1%/../*}/.." && mkdir -p "./${1##*/../}") && cd "./$1";;
+    ../*) (cd .. && mkdir -p "${1#.}") && cd "$1";;
+    *) mkdir -p "./$1" && cd "./$1";;
+  esac
+}
+
