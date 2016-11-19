@@ -1,3 +1,6 @@
 PATH=/usr/local/Qt-5.6.0/bin:$PATH
 export PATH
 source /usr/share/nvm/init-nvm.sh
+
+export ANDROID_HOME=~/Android/Sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
