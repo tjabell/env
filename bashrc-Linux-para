@@ -5,4 +5,4 @@ source /usr/share/nvm/init-nvm.sh
 export ANDROID_HOME=~/Android/Sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 
-export GOPATH=$HOME/software_learning/go/
+export GOPATH=$HOME/go
