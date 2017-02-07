@@ -184,3 +184,7 @@ mkcd () {
   esac
 }
 
+# Tmux Plugin Manager
+if [[ ! -a ~/.tmux/plugins/tpm ]] ; then
+    [[ -x /usr/bin/git ]] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;
+fi
