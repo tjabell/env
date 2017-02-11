@@ -132,7 +132,8 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export TERM=xterm-256color
 
 alias sc='systemctl'
-alias jc='journalctl --user'
+alias jc='journalctl'
+alias jcu='journalctl --user'
 alias scu='systemctl --user'
 
 if [[ -a ~/.bash-git-prompt/gitprompt.sh ]]; then source ~/.bash-git-prompt/gitprompt.sh; fi
