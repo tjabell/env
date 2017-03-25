@@ -185,6 +185,14 @@ mkcd () {
   esac
 }
 
+# catls - either list a directory or cat a file
+catls()
+{
+  [[ -f "$1" ]] && cat "$1" || ls "$1";
+}
+
+alias cl=catls
+
 # Tmux Plugin Manager
 if [[ ! -a ~/.tmux/plugins/tpm ]] ; then
     [[ -x /usr/bin/git ]] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;
