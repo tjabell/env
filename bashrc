@@ -74,10 +74,15 @@ add_to_PROMPT_COMMAND() {
 }
 
 # History control
+[[ -d ~/.history ]] || mkdir --mode=0700 ~/.history
+[[ -d ~/.history ]] && chmod 0700 ~/.history
+ttynum=`tty | sed -e "s:/dev/pts/::"`
+HISTFILE=~/.history/history.$ttynum
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
 export HISTFILESIZE=100000               # big big history
 shopt -s histappend                      # append to history, don't overwrite it
+
 
 # Save and reload the history after each command finishes
 # -- For some reason adding these individually as 'history -r' 'history -c' doesn't work, the history gets wiped after each new prompt
@@ -197,3 +202,4 @@ alias cl=catls
 if [[ ! -a ~/.tmux/plugins/tpm ]] ; then
     [[ -x /usr/bin/git ]] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;
 fi
+
