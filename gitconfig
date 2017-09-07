@@ -11,6 +11,7 @@
 	ci = commit
 	st = status
 	br = branch
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
 [push]
 	default = simple
 [merge]
