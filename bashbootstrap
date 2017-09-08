@@ -21,3 +21,8 @@ myed=${VISUAL:-${EDITOR:-vim}}
 alias editbashrc="$myed $masterbashrc"
 alias editosbashrc="$myed $osbashrc"
 alias editlocalbashrc="$myed $localbashrc"
+
+# Add epipe command
+if [ -f ./env/epipe.sh ]; then
+    source ~/env/epipe.sh
+fi
