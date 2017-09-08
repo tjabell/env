@@ -12,6 +12,7 @@
 	st = status
 	br = branch
     ignored = !git ls-files -v | grep "^[[:lower:]]"
+    changed-files= "!f() { git --no-pager diff --name-only \"$1\" \"$2\"; }; f"
 [push]
 	default = simple
 [merge]
