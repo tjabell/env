@@ -203,3 +203,4 @@ if [[ ! -a ~/.tmux/plugins/tpm ]] ; then
     [[ -x /usr/bin/git ]] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;
 fi
 
+function start-machine { m="$1"; sudo machinectl start "$m" && sleep 2 && sudo machinectl login "$m"; }
