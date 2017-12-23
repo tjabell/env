@@ -76,7 +76,7 @@ add_to_PROMPT_COMMAND() {
 # History control
 [[ -d ~/.history ]] || mkdir --mode=0700 ~/.history
 [[ -d ~/.history ]] && chmod 0700 ~/.history
-ttynum=`tty | sed -e "s:/dev/pts/::"`
+ttynum=`tty | sed -e "s:/dev/pts/::" | sed -e "s:/dev/tty::"`
 HISTFILE=~/.history/history.$ttynum
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=100000                   # big big history
