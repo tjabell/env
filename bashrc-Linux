@@ -33,6 +33,7 @@ alias sudo='sudo '
 alias emacsq='emacs -Q -nw'
 alias se='scu start emacs'
 alias mcs='sudo machinectl start '
+alias xclips='xclip -selection clipboard'
 
 # mkcd function - creates a directory if it doesn't exist and cd's into it
 mkcd () {
@@ -70,3 +71,4 @@ function tm {
     tmux new -s $TMUXNAME
   fi
 }
+
