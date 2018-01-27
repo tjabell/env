@@ -8,3 +8,10 @@ git -C /home/trevor/env/ pull &
 git -C /home/trevor/emacs/ pull &
 git -C /home/trevor/org/ pull &
 
+wait
+read -p "Start emacs client? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    systemctl --user start emacs
+fi
