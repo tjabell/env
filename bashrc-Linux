@@ -34,6 +34,7 @@ alias emacsq='emacs -Q -nw'
 alias se='scu start emacs'
 alias mcs='sudo machinectl start '
 alias xclips='xclip -selection clipboard'
+alias noderl="env NODE_NO_READLINE=1 rlwrap node"
 
 # mkcd function - creates a directory if it doesn't exist and cd's into it
 mkcd () {
