@@ -36,7 +36,20 @@ catls() {
   [[ -f "$1" ]] && cat "$1" || ls "$1";
 }
 
+function start-machine { m="$1"; sudo machinectl start "$m" && sleep 2 && sudo machinectl login "$m"; }
+
+function tm {
+  TMUXNAME=${1:-"default"}
+
+  if tmux ls | grep "^$TMUXNAME:"; then
+    tmux attach -d -t $TMUXNAME
+  else
+    tmux new -s $TMUXNAME
+  fi
+}
+
 alias mc='machinectl'
+alias sm='start-machine'
 alias gru='git remote update'
 alias gru='git remote update'
 alias ssheasy='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=No'
@@ -60,17 +73,4 @@ alias cl=catls
 if [[ ! -a ~/.tmux/plugins/tpm ]] ; then
     [[ -x /usr/bin/git ]] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm;
 fi
-
-function start-machine { m="$1"; sudo machinectl start "$m" && sleep 2 && sudo machinectl login "$m"; }
-
-function tm {
-  TMUXNAME=${1:-"default"}
-
-  if tmux ls | grep "^$TMUXNAME:"; then
-    tmux attach -d -t $TMUXNAME
-  else
-    tmux new -s $TMUXNAME
-  fi
-}
-
 
