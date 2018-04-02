@@ -1,5 +1,6 @@
 if [ -z "$PS1" ]; then
-    exit
+    # this breaks X...
+    # exit 
 fi
 
 envdir=~/env/
