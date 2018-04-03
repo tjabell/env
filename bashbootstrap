@@ -1,7 +1,7 @@
-if [ -z "$PS1" ]; then
+#if [ -z "$PS1" ]; then
     # this breaks X...
     # exit 
-fi
+#fi
 
 envdir=~/env/
 masterbashrc=$envdir/bashrc
