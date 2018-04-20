@@ -4,6 +4,7 @@ keys=`ssh-add -l`
 if [[ ! $keys == *"$fp"* ]]; then
     ssh-add
 fi
+echo 'Updating Env'
 git -C /home/trevor/env/ pull --rebase &
 
 if [[ -d /home/trevor/emacs/ ]]
