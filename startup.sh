@@ -7,11 +7,13 @@ fi
 echo 'Updating Env'
 git -C /home/trevor/env/ pull --rebase &
 
+echo 'Updating Emacs'
 if [[ -d /home/trevor/emacs/ ]]
 then
 git -C /home/trevor/emacs/ pull --rebase &    
 fi
 
+echo 'Updating Org'
 if [[ -d /home/trevor/org/ ]]
 then
     git -C /home/trevor/org/ pull --rebase &
