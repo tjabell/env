@@ -3,8 +3,8 @@ export DISPLAY=:0
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 if which ruby>/dev/null && which gem>/dev/null; then
     # make idempotent by checking path contains gem dir already
-    if ruby -rubygems -e 'exit(!ENV["PATH"].include?(Gem.user_dir))'; then
-        PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    if ruby -r rubygems -e 'exit(!ENV["PATH"].include?(Gem.user_dir))'; then
+        PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
     fi
 fi
 
