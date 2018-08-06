@@ -1,3 +1,5 @@
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/trevor/.sdkman"
 [[ -s "/home/trevor/.sdkman/bin/sdkman-init.sh" ]] && source "/home/trevor/.sdkman/bin/sdkman-init.sh"
+
+eval `keychain --eval id_rsa`
