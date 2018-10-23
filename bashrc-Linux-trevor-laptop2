@@ -4,3 +4,9 @@ export SDKMAN_DIR="/home/trevor/.sdkman"
 
 eval `keychain --eval id_rsa`
 xhost +local:*
+
+# Add .NET Core SDK tools
+export PATH="$PATH:/home/trevor/.dotnet/tools"
+alias tf='/home/trevor/TEE-CLC-14.134.0/tf -login:"tabell,$TFPWD" -server:"https://quickpasscode.visualstudio.com/DefaultCollection/"'
+alias vbox='VBoxManage'
+alias parsus2012='vbox startvm Parsus2012'
