@@ -77,3 +77,11 @@ fi
 if command -v keychain; then
     eval $(keychain --eval --quiet id_rsa)
 fi
+
+if [ -f /bin/pacman ]; then
+    function search() {
+        aura -Ss $1 && aura -As $1
+    };
+fi
+
+
