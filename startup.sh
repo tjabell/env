@@ -22,8 +22,11 @@ fi
 
 wait
 
+echo 'Env Status'
 git -C /home/trevor/env/ status
+echo 'Emacs Status'
 git -C /home/trevor/emacs/ status
+echo 'Org Status'
 git -C /home/trevor/org/ status
 
 read -p "Start emacs client? " -n 1 -r
