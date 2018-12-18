@@ -21,6 +21,11 @@ fi
 
 
 wait
+
+git -C /home/trevor/env/ status
+git -C /home/trevor/emacs/ status
+git -C /home/trevor/org/ status
+
 read -p "Start emacs client? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
