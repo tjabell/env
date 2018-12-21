@@ -1,0 +1,3 @@
+xhost +local:all
+alias brutus='VBoxManage startvm brutus'
+export PATH="$PATH:/home/trevor/.dotnet/tools"
