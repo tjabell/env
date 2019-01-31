@@ -9,5 +9,5 @@ git clone https://tjabell@github.com/tjabell/emacs.git ~/emacs
 
 # Enable user's emacs.service 
 mkdir -p ~/.config/systemd/user
-cp ~/emacs/emacs.service ~/.config/systemd/user/
+cp $(find /usr/share -iname emacs.service | head -n 1)  ~/.config/systemd/user/
 systemctl --user daemon-reload
