@@ -28,10 +28,3 @@ echo '---- Emacs Status ----'
 git -C /home/trevor/emacs/ status
 echo '---- Org Status ----'
 git -C /home/trevor/org/ status
-
-read -p "Start emacs client? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    systemctl --user start emacs
-fi
