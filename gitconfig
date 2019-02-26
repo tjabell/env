@@ -11,6 +11,7 @@
     ci = commit
     st = status
     br = branch
+    fa = fetch --all
     ignored = !git ls-files -v | grep "^[[:lower:]]"
     changed-files= "!f() { git --no-pager diff --name-only \"$1\" \"$2\"; }; f"
 [push]
