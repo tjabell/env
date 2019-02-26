@@ -85,3 +85,14 @@ if [ -f /bin/pacman ]; then
 fi
 
 
+if [[ -f ~/.git-completion.bash ]]; then
+    . ~/.git-completion.bash
+fi
+
+if [[ -f ~/.git-prompt.sh ]]; then
+    . ~/.git-prompt.sh
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWUPSTREAM="auto"
+    export PS1="${Green}\w${NC}${Purple}$(__git_ps1)${NC} \$ "
+fi
