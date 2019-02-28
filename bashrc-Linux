@@ -49,6 +49,7 @@ function tm {
 }
 
 alias mc='machinectl'
+alias hn=hostname
 alias sm='start-machine'
 alias gru='git remote update'
 alias gru='git remote update'
