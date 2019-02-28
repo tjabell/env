@@ -95,5 +95,9 @@ if [[ -f ~/.git-prompt.sh ]]; then
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
     export GIT_PS1_SHOWUPSTREAM="auto"
-    export PS1="${Green}\w${NC}${Purple}$(__git_ps1)${NC} \$ "
+    # Remember \[ surrounds non-printable characters
+    CUR_DIR_GREEN="\\[${Green}\\]\w\\[${NC}\\]"
+    GIT_PROMPT_PURPLE="\\[${Purple}\\]$(__git_ps1)\\[${NC}\\]"
+    PREFIX=' $ '
+    export PS1="${CUR_DIR_GREEN}${GIT_PROMPT_PURPLE}${PREFIX}"
 fi
