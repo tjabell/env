@@ -91,7 +91,8 @@ if [[ -f ~/.git-completion.bash ]]; then
 fi
 
 if [[ -f ~/.git-prompt.sh ]]; then
-    . ~/.git-prompt.sh
+    # Can usually be linked to /usr/share/git/git-prompt.sh 
+    . ~/.git-prompt.sh
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
     export GIT_PS1_SHOWUPSTREAM="auto"
@@ -99,5 +100,6 @@ if [[ -f ~/.git-prompt.sh ]]; then
     CUR_DIR_GREEN="\\[${Green}\\]\w\\[${NC}\\]"
     GIT_PROMPT_PURPLE="\\[${Purple}\\]$(__git_ps1)\\[${NC}\\]"
     PREFIX=' $ '
-    export PS1="${CUR_DIR_GREEN}${GIT_PROMPT_PURPLE}${PREFIX}"
+    # Need to use __git call prompt directly here to enable command substition
+    export PS1="${CUR_DIR_GREEN}"\\[${Purple}\\]$(__git_ps1)\\[${NC}\\]"${PREFIX}"
 fi
