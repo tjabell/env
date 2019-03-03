@@ -1,3 +1,4 @@
 xhost +local:all
 alias brutus='VBoxManage startvm brutus'
 export PATH="$PATH:/home/trevor/.dotnet/tools"
+export PATH=/home/trevor/.gem/ruby/2.6.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-sdk/tools:/opt/android-sdk/tools/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/trevor/root/bin:/home/trevor/.dotnet/tools:/opt/android-sdk/tools:/opt/android-sdk/tools/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/trevor/.dotnet/tools:/home/trevor/go/bin/:/home/trevor/go/bin/
