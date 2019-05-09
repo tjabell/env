@@ -5,6 +5,10 @@
 # this file and re-run i3-config-wizard(1).
 #
 
+## TREVOR NOTES
+# Need to install i3status, i3lock on arch for statusbar/locking to work
+# Modified focus commands to be more like vim - hjkl, and use semicolon to swith from vert to horiz window switch
+## 
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
