@@ -1,0 +1,7 @@
+# i3 xprofile config Copy to ~/.xprofile
+xhost +local:*
+    
+setxkbmap -option ctrl:swapcaps
+xmodmap -e "clear mod1"
+xmodmap -e "add mod1 = Alt_L"
+xmodmap -e "add mod4 = Alt_R"

@@ -3,7 +3,6 @@ export SDKMAN_DIR="/home/trevor/.sdkman"
 [[ -s "/home/trevor/.sdkman/bin/sdkman-init.sh" ]] && source "/home/trevor/.sdkman/bin/sdkman-init.sh"
 
 eval `keychain --eval id_rsa`
-xhost +local:*
 
 # Add .NET Core SDK tools
 export PATH="$PATH:/home/trevor/.dotnet/tools"
@@ -11,3 +10,4 @@ alias tf='/home/trevor/TEE-CLC-14.134.0/tf -login:"tabell,$TFPWD" -server:"https
 alias vbox='VBoxManage'
 alias parsus2012='vbox startvm Parsus2012'
 alias condown='sudo nmcli con down br0'
+

@@ -1,5 +1,3 @@
-export DISPLAY=:0
-
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 if which ruby>/dev/null && which gem>/dev/null; then
     # make idempotent by checking path contains gem dir already
@@ -103,4 +101,5 @@ if [[ -f ~/.git-prompt.sh ]]; then
     # Need to use __git call prompt directly here to enable command substition
     export PS1="${CUR_DIR_GREEN}"\\[${Purple}\\]$(__git_ps1)\\[${NC}\\]"${PREFIX}"
 fi
+
 alias aj=archlinux-java
