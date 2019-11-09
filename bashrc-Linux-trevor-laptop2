@@ -9,3 +9,5 @@ export PATH="$PATH:/home/trevor/.dotnet/tools"
 alias tf='/home/trevor/TEE-CLC-14.134.0/tf -login:"tabell,$TFPWD" -server:"https://quickpasscode.visualstudio.com/DefaultCollection/"'
 alias condown='sudo nmcli con down br0'
 
+alias rk='setxkbmap -layout us'
+
