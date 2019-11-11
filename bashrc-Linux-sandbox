@@ -1,1 +1,2 @@
-export PATH=$PATH:/home/trevor/go/bin
+export PATH=$PATH:/home/trevor/go/bin:/home/trevor/.npm-modules/bin
+export PATH=$PATH:/home/trevor/.npm-packages/bin
