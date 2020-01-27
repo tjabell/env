@@ -1,2 +1,19 @@
 export PATH=$PATH:/home/trevor/go/bin:/home/trevor/.npm-modules/bin
 export PATH=$PATH:/home/trevor/.npm-packages/bin
+
+# kdesrc-build setup
+
+# Adding the kdesrc-build directory to the path
+export PATH="$HOME/hacking/kde/src/kdesrc-build:$PATH"
+
+# Creating alias for running software built with kdesrc-build
+kdesrc-run ()
+{
+  source "$HOME/hacking/kde/build/$1/prefix.sh" && "$HOME/hacking/kde/usr/bin/$1"
+}
+
+export DISPLAY=:0
+
+alias firefox-developer-edition-custom='firefox-developer-edition -new-instance -p keikodcode'
+# end kdesrc-build setup
+export BROWSER=firefox-developer-edition
