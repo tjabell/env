@@ -17,5 +17,4 @@ fi
 
 
 echo "Creating $REPO"
-echo 'would have created repo'
-#ssh -t source "./make-repository.sh $REPO"
+ssh -t source "./make-repository.sh $REPO"
