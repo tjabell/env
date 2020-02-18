@@ -144,5 +144,10 @@ alias scu='systemctl --user'
 if [[ -a ~/.bash-git-prompt/gitprompt.sh ]]; then source ~/.bash-git-prompt/gitprompt.sh; fi
 if [[ -a ~/.git-completion.bash ]]; then source ~/.git-completion.bash; fi
 
-alias update='sudo pacman -Sy'
-alias upgrade='sudo pacman -Syu'
+
+path_to_pacman=$(which packman)
+if [ -x "$path_to_pacman" ] ; then
+    alias update='sudo pacman -Sy'
+    alias upgrade='sudo pacman -Syu'
+    alias upgrade-aur="sudo aura -Akuax"
+fi
