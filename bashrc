@@ -145,9 +145,9 @@ if [[ -a ~/.bash-git-prompt/gitprompt.sh ]]; then source ~/.bash-git-prompt/gitp
 if [[ -a ~/.git-completion.bash ]]; then source ~/.git-completion.bash; fi
 
 
-path_to_pacman=$(which pacman)
-if [ -x "$path_to_pacman" ] ; then
+cmd=pacman
+[[ $(type -P "$cmd") ]] && {
     alias update='sudo pacman -Sy'
     alias upgrade='sudo pacman -Syu'
     alias upgrade-aur="sudo aura -Akuax"
-fi
+}
