@@ -1,3 +1,4 @@
 eval `keychain --eval id_rsa`
 
 source /usr/share/nvm/init-nvm.sh
+export PATH=/home/trevor/.nvm/versions/node/v11.10.0/bin:/home/trevor/.gem/ruby/2.6.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/trevor/root/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/trevor/.local/bin:/home/trevor/.local/bin:/home/trevor/.local/bin
