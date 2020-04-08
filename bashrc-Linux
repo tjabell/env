@@ -95,7 +95,7 @@ if [[ -f ~/.git-completion.bash ]]; then
 fi
 
 if [[ -f ~/.git-prompt.sh ]]; then
-    # Can usually be linked to /usr/share/git/git-prompt.sh 
+    # Can usually be linked to /usr/share/git/git-prompt.sh
     . ~/.git-prompt.sh
     export GIT_PS1_SHOWDIRTYSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -109,4 +109,4 @@ if [[ -f ~/.git-prompt.sh ]]; then
 fi
 
 alias aj=archlinux-java
-alias myemacsclient=emacsclient -c -e \(setq\ my-dbus-address\ "$DBUS_SESSION_BUS_ADDRESS"\)
+alias myemacsclient='emacsclient -c -e \(setq\ my-dbus-address\ \"$DBUS_SESSION_BUS_ADDRESS\"\)'
