@@ -70,6 +70,7 @@ alias cl=catls
 
 # Navigation
 alias pcd='pushd '
+alias cdp='pushd '
 alias back='popd '
 alias b='popd '
 
@@ -108,3 +109,4 @@ if [[ -f ~/.git-prompt.sh ]]; then
 fi
 
 alias aj=archlinux-java
+alias myemacsclient=emacsclient -c -e \(setq\ my-dbus-address\ "$DBUS_SESSION_BUS_ADDRESS"\)
