@@ -105,10 +105,12 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-alias ssc=sudo sc
 
+alias ssc=sudo sc
 alias -g mc='machinectl'
 alias -g sm='start-machine'
+alias -g sc=systemctl
+alias -g jc=journalctl
 
 alias hn=hostname
 alias gru='git remote update'
@@ -155,3 +157,7 @@ mkcd () {
     *) mkdir -p "./$1" && cd "./$1";;
   esac
 }
+
+if command -v keychain; then
+    eval $(keychain --eval --quiet id_ecdsa id_rsa)
+fi
