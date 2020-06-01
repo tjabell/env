@@ -105,6 +105,7 @@ HISTSIZE=5000
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias -g sc=systemctl
+alias -g NF='./*(oc[1])'
 
 # Android paths
 export ANDROID_HOME=$HOME/Android/Sdk
