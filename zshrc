@@ -102,11 +102,16 @@ HISTSIZE=5000
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias -g sc=systemctl
 
+# Android paths
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Rust Paths
+source ~/.cargo/env
+
 
 alias ssc=sudo sc
 alias -g mc='machinectl'
