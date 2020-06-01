@@ -2,6 +2,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+case $(tty) in /dev/tty[0-3]*)
+ tbsm ;;
+esac
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/trevor/.oh-my-zsh"
 
