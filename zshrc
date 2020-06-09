@@ -78,16 +78,6 @@ plugins=(git z zsh_reload)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-fpath=(
-    ~/.zfuncs
-    "${fpath[@]}"
-)
-
-# My Functions
-autoload -Uz require_clean_work_tree
-autoload -Uz print_header
-
 SAVEHIST=10000
 HISTSIZE=5000
 # export MANPATH="/usr/local/man:$MANPATH"
