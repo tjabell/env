@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Taken from https://www.spinics.net/lists/git/msg142043.html
+# Which was found from https://stackoverflow.com/questions/3878624/how-do-i-programmatically-determine-if-there-are-uncommitted-changes/3879077#3879077
+# Looks for unstaged changes and errors if any exist
+require_clean_work_tree () {
+    repo=$1
+
+    # Update the index
+    git -C $repo update-index -q --ignore-submodules --refresh
+    err=0
+
+    # Disallow unstaged changes in the working tree
+    if ! git -C $repo diff-files --quiet --ignore-submodules --
+    then
+        echo >&2 "your working tree has unstaged changes."
+        git -C $repo diff-files --name-status -r --ignore-submodules -- >&2
+        err=1
+    fi
+
+    # Disallow uncommitted changes in the index
+    if ! git -C "$repo" diff-index --cached --quiet HEAD --ignore-submodules --
+    then
+        echo >&2 "your index contains uncommitted changes."
+        git -C "$repo" diff-index --cached --name-status -r --ignore-submodules HEAD -- >&2
+        err=1
+    fi
+
+    return $err
+}

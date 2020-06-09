@@ -2,9 +2,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-case $(tty) in /dev/tty[0-3]*)
- tbsm ;;
-esac
+# case $(tty) in /dev/tty[0-3]*)
+#  tbsm ;;
+# esac
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/trevor/.oh-my-zsh"
@@ -78,6 +78,15 @@ plugins=(git z zsh_reload)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+fpath=(
+    ~/.zfuncs
+    "${fpath[@]}"
+)
+
+# My Functions
+autoload -Uz require_clean_work_tree
+autoload -Uz print_header
 
 SAVEHIST=10000
 HISTSIZE=5000
@@ -173,3 +182,4 @@ mkcd () {
 if command -v keychain; then
     eval $(keychain --eval --quiet id_ecdsa id_rsa)
 fi
+alias desktop=startplasma-wayland

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+function print_header() {
+
+    repo=$1
+    # Printing Header
+    # like ********
+    #      | repo |
+    len=$(( 4 + ${#repo}))
+    printf "*%.0s" $(seq 1 $len)
+    printf "\n"
+
+    echo    "| $repo |"
+
+    printf "*%.0s" $(seq 1 $len)
+    printf "\n"
+    # End Printing
+}
