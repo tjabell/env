@@ -173,3 +173,12 @@ if command -v keychain; then
     eval $(keychain --eval --quiet id_ecdsa id_rsa)
 fi
 alias desktop=startplasma-wayland
+
+# Add gem bin to path
+export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+if which ruby>/dev/null && which gem>/dev/null; then
+    # make idempotent by checking path contains gem dir already
+    if ruby -r rubygems -e 'exit(!ENV["PATH"].include?(Gem.user_dir))'; then
+        PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    fi
+fi
