@@ -117,7 +117,7 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 source ~/.cargo/env
 
 
-alias ssc=sudo sc
+alias -g ssc='sudo systemctl'
 alias -g mc='machinectl'
 alias -g sm='start-machine'
 alias -g sc=systemctl
@@ -180,5 +180,15 @@ if which ruby>/dev/null && which gem>/dev/null; then
     # make idempotent by checking path contains gem dir already
     if ruby -r rubygems -e 'exit(!ENV["PATH"].include?(Gem.user_dir))'; then
         PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    fi
+fi
+
+if which dotnet>/dev/null && which dotnet>/dev/null; then
+    DOTNET_TOOLS_DIR=/home/trevor/.dotnet/tools
+
+    if [[ :$PATH: == *:"$DOTNET_TOOLS_DIR":* ]] ; then
+        #export PATH="$DOTNET_TOOLS_DIR:$PATH"
+    else
+        export PATH="$DOTNET_TOOLS_DIR:$PATH"
     fi
 fi
