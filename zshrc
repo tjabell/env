@@ -192,3 +192,14 @@ if which dotnet>/dev/null && which dotnet>/dev/null; then
         export PATH="$DOTNET_TOOLS_DIR:$PATH"
     fi
 fi
+
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+
+pathadd ~/.node_modules/bin
+
+alias reboot-into-windows="systemctl reboot --boot-loader-entry=auto-windows"
+alias dt=desktop
