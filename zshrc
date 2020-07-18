@@ -203,3 +203,4 @@ pathadd ~/.node_modules/bin
 
 alias reboot-into-windows="systemctl reboot --boot-loader-entry=auto-windows"
 alias dt=desktop
+alias sp='sudo pacman'
