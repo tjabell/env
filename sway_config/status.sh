@@ -31,4 +31,4 @@ battery_line=$(echo $battery_line | tr '\n' ' ')
 
 # Emojis and characters for the status bar
 # 💎 💻 💡 🔌 ⚡ 📁 \|
-echo $uptime_formatted ↑ $linux_version 🐧 $battery_line 🔋 $date_formatted
+echo $uptime_formatted ↑ $date_formatted $linux_version 🐧 $battery_line 🔋 $date_formatted
