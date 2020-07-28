@@ -208,7 +208,7 @@ alias hibernate='systemctl hibernate'
 
 
 cmd=pacman
-[[ $(type -P "$cmd") ]] && {
+[[ $(type "$cmd") ]] && {
     alias update='sudo pacman -Sy'
     alias upgrade='sudo pacman -Syu'
     alias upgrade-aur="sudo aura -Akuax"
