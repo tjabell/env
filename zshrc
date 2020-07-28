@@ -204,3 +204,12 @@ pathadd ~/.node_modules/bin
 alias reboot-into-windows="systemctl reboot --boot-loader-entry=auto-windows"
 alias dt=desktop
 alias sp='sudo pacman'
+alias hibernate='systemctl hibernate'
+
+
+cmd=pacman
+[[ $(type -P "$cmd") ]] && {
+    alias update='sudo pacman -Sy'
+    alias upgrade='sudo pacman -Syu'
+    alias upgrade-aur="sudo aura -Akuax"
+}
