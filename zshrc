@@ -208,7 +208,8 @@ alias hibernate='systemctl hibernate'
 
 
 cmd=pacman
-[[ $(type "$cmd") ]] && {
+# whence - 'type -P' in zsh
+[[ $(whence -f "$cmd") ]] && {
     alias update='sudo pacman -Sy'
     alias upgrade='sudo pacman -Syu'
     alias upgrade-aur="sudo aura -Akuax"
