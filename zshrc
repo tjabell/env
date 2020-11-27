@@ -116,6 +116,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Rust Paths
 source ~/.cargo/env
 
+# Python Paths
+export PATH=$PATH:$HOME/.local/bin
 
 alias -g ssc='sudo systemctl'
 alias -g mc='machinectl'
@@ -207,10 +209,46 @@ alias sp='sudo pacman'
 alias hibernate='systemctl hibernate'
 
 
-cmd=pacman
 # whence - 'type -P' in zsh
-[[ $(whence -f "$cmd") ]] && {
+[[ $(typeset pacman) ]] && {
     alias update='sudo pacman -Sy'
     alias upgrade='sudo pacman -Syu'
     alias upgrade-aur="sudo aura -Akuax"
 }
+
+alias -g scu="systemctl --user"
+alias -g scult='systemctl --user list-timers'
+alias -g sclt='systemctl list-timers'
+
+alias lock='swaylock -c 005678'
+alias upgrade=sudo pacman -Syu
+
+vterm_printf(){
+    if [ -n "$TMUX" ]; then
+        # Tell tmux to pass the escape sequences through
+        # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+
+vterm_cmd() {
+    local vterm_elisp
+    vterm_elisp=""
+    while [ $# -gt 0 ]; do
+        vterm_elisp="$vterm_elisp""$(printf '"%s" ' "$(printf "%s" "$1" | sed -e 's|\\|\\\\|g' -e 's|"|\\"|g')")"
+        shift
+    done
+    vterm_printf "51;E$vterm_elisp"
+}
+
+vterm_prompt_end() {
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)";
+}
+
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
