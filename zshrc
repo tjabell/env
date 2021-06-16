@@ -201,7 +201,11 @@ pathadd() {
     fi
 }
 
+# Node paths
 pathadd ~/.node_modules/bin
+
+# Go Path
+pathadd ~/go/bin
 
 alias reboot-into-windows="systemctl reboot --boot-loader-entry=auto-windows"
 alias dt=desktop
@@ -252,3 +256,6 @@ vterm_prompt_end() {
 
 setopt PROMPT_SUBST
 PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
+
+# Alacritty
+alias at='alacritty-themes'
