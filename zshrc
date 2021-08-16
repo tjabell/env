@@ -114,7 +114,9 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Rust Paths
-source ~/.cargo/env
+if [ -f ~/.cargo/env ]; then
+   source ~/.cargo/env
+fi
 
 # Python Paths
 export PATH=$PATH:$HOME/.local/bin
@@ -259,3 +261,8 @@ PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
 
 # Alacritty
 alias at='alacritty-themes'
+
+# Z config
+if command -v z; then
+    . /usr/share/z/z.sh
+fi
