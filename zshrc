@@ -126,6 +126,7 @@ alias -g mc='machinectl'
 alias -g sm='start-machine'
 alias -g sc=systemctl
 alias -g jc=journalctl
+alias -g startdb='sudo systemctl start mssql-server'
 
 alias hn=hostname
 alias gru='git remote update'
