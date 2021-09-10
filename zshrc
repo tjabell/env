@@ -226,6 +226,8 @@ alias hibernate='systemctl hibernate'
 alias -g scu="systemctl --user"
 alias -g scult='systemctl --user list-timers'
 alias -g sclt='systemctl list-timers'
+alias -g startdb='sudo systemctl start mssql-server'
+alias -g stopdb='sudo systemctl stop mssql-server'
 
 alias lock='swaylock -c 005678'
 alias upgrade=sudo pacman -Syu
