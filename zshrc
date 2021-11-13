@@ -107,12 +107,25 @@ HISTSIZE=5000
 alias -g sc=systemctl
 alias -g NF='./*(oc[1])'
 
+# Append "$1" to $PATH when not already in.
+# This function API is accessible to scripts in /etc/profile.d
+# Borrowed form /etc/profile 
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
 # Android paths
 export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# append_path $ANDROID_HOME/emulator
+# append_path $ANDROID_HOME/tools
+# append_path $ANDROID_HOME/tools/bin
+# append_path $ANDROID_HOME/platform-tools
+
 
 # Rust Paths
 if [ -f ~/.cargo/env ]; then
@@ -120,7 +133,7 @@ if [ -f ~/.cargo/env ]; then
 fi
 
 # Python Paths
-export PATH=$PATH:$HOME/.local/bin
+append_path $HOME/.local/bin
 
 alias -g ssc='sudo systemctl'
 alias -g mc='machinectl'
@@ -185,7 +198,7 @@ export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 if which ruby>/dev/null && which gem>/dev/null; then
     # make idempotent by checking path contains gem dir already
     if ruby -r rubygems -e 'exit(!ENV["PATH"].include?(Gem.user_dir))'; then
-        PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+        append_path "$(ruby -r rubygems -e 'puts Gem.user_dir')/bin"
     fi
 fi
 
@@ -195,21 +208,15 @@ if which dotnet>/dev/null && which dotnet>/dev/null; then
     if [[ :$PATH: == *:"$DOTNET_TOOLS_DIR":* ]] ; then
         #export PATH="$DOTNET_TOOLS_DIR:$PATH"
     else
-        export PATH="$DOTNET_TOOLS_DIR:$PATH"
+        append_path "$DOTNET_TOOLS_DIR:$PATH"
     fi
 fi
 
-pathadd() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        PATH="${PATH:+"$PATH:"}$1"
-    fi
-}
-
 # Node paths
-pathadd ~/.node_modules/bin
+append_path ~/.node_modules/bin
 
 # Go Path
-pathadd ~/go/bin
+append_path ~/go/bin
 
 alias reboot-into-windows="systemctl reboot --boot-loader-entry=auto-windows"
 alias dt=desktop
@@ -270,3 +277,6 @@ alias at='alacritty-themes'
 if command -v z; then
     . /usr/share/z/z.sh
 fi
+
+# npm global config
+append_path ~/.npm-global/bin:$PATH
