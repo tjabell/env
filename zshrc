@@ -280,3 +280,6 @@ fi
 
 # npm global config
 append_path ~/.npm-global/bin:$PATH
+
+export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
+export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
