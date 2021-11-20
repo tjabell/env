@@ -4,7 +4,7 @@ Not quite sure what I will do with this yet, but getting started with centralizi
 
 * Qutebrowser
 ** Emacs configuration
-#+begin_src python
+#+begin_src python :tangle ~/.config/qutebrowser/config.py
   # qutemacs - a simple, preconfigured Emacs binding set for qutebrowser
   #
   # The aim of this binding set is not to provide bindings for absolutely
@@ -156,18 +156,21 @@ Not quite sure what I will do with this yet, but getting started with centralizi
       '<alt-n>': 'command-history-next',
 
       # escape hatch
-      '<ctrl-g>': 'leave-mode',
+      '<ctrl-g>': ESC_BIND,
+      #'<ctrl-g>': 'leave-mode',
   }
 
   c.bindings.commands['hint'] = {
       # escape hatch
-      '<ctrl-g>': 'leave-mode',
+      '<ctrl-g>': ESC_BIND,
+      #'<ctrl-g>': 'leave-mode',
   }
 
 
   c.bindings.commands['caret'] = {
       # escape hatch
-      '<ctrl-g>': 'leave-mode',
+      '<ctrl-g>': ESC_BIND,
+      #'<ctrl-g>': 'leave-mode',
   }
 
   c.bindings.commands['insert'] = {
@@ -185,7 +188,8 @@ Not quite sure what I will do with this yet, but getting started with centralizi
       '<alt-backspace>': 'fake-key <Ctrl-Backspace>',
       '<ctrl-w>': 'fake-key <Ctrl-backspace>',
       '<ctrl-y>': 'insert-text {primary}',
-      '<ctrl-g>': 'leave-mode'
+      '<ctrl-g>': ESC_BIND
+      #'<ctrl-g>': 'leave-mode'
 
   }
 #+end_src
