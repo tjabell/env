@@ -1,6 +1,3 @@
-[user]
-    email = trevor.abell@parsus.com
-    name = Trevor Abell
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr, %cn)%Creset' --abbrev-commit --date=relative
     hist = log --graph --pretty=format:'%h %ad | %s%d [%an]' --date=short
