@@ -3,9 +3,10 @@
 Not quite sure what I will do with this yet, but getting started with centralizing configuration here
 
 * Qutebrowser
-** Emacs configuration
+
+** Configuration
 #+begin_src python :tangle ~/.config/qutebrowser/config.py
-  # qutemacs - a simple, preconfigured Emacs binding set for qutebrowser
+  # qutebrowser - a simple, preconfigured Emacs binding set for qutebrowser
   #
   # The aim of this binding set is not to provide bindings for absolutely
   # everything, but to provide a stable launching point for people to make their
@@ -13,11 +14,9 @@ Not quite sure what I will do with this yet, but getting started with centralizi
   #
   # Installation:
   #
-  # 1. Copy this file or add this repo as a submodule to your dotfiles.
-  # 2. Add this line to your config.py, and point the path to this file:
+  #  1. Copy this file or add this repo as a submodule to your dotfiles.
+  #  2. Add this line to your config.py, and point the path to this file:
   # config.source('qutemacs/qutemacs.py')
-
-
   config = config  # type: ConfigAPI # noqa: F821 pylint: disable=E0602,C0103
   c = c  # type: ConfigContainer # noqa: F821 pylint: disable=E0602,C0103
 
@@ -192,4 +191,337 @@ Not quite sure what I will do with this yet, but getting started with centralizi
       #'<ctrl-g>': 'leave-mode'
 
   }
+#+end_src
+
+* Sway
+
+#+begin_src conf-unix
+  # Default config for sway
+  #
+  # Copy this to ~/.config/sway/config and edit it to your liking.
+  #
+  # Read `man 5 sway` for a complete reference.
+
+  ### Variables
+  #
+  # Logo key. Use Mod1 for Alt.
+  set $mod Mod4
+  # Home row direction keys, like vim
+  set $left h
+  set $down j
+  set $up k
+  set $right l
+  # Your preferred terminal emulator
+  set $term alacritty
+  # Your preferred application launcher
+  # Note: pass the final command to swaymsg so that the resulting window can be opened
+  # on the original workspace that the command was run on.
+  #set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+  # Example from https://gist.github.com/Mel34/ab9b6d562f9181ed8bbdc7c76022b85b
+  #set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
+  for_window [app_id="^launcher$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+  set $menu exec $term --class=launcher -e /usr/bin/sway-launcher-desktop
+  bindsym $mod+d exec $menu
+
+
+  ### Output configuration
+  #
+  # Default wallpaper (more resolutions are available in /usr/local/share/backgrounds/sway/)
+  #output "*" background /usr/local/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
+  #output * bg /usr/local/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+  #output * bg /usr/local/share/backgrounds/arch-bg-1.jpg fill
+  #output * bg #FFFFFF solid_color
+  #
+  # Example configuration:
+  #
+  #   output HDMI-A-1 resolution 1920x1080 position 1920,0
+  #
+  # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+  output eDP-1 resolution 3840x2160 position 0,0
+  output eDP-1 scale 1
+
+  output HDMI-A-2 resolution 1920x1200 position -1920,0
+  output HDMI-A-2 scale 1
+
+
+  ### Idle configuration
+  #
+  # Example configuration:
+  #
+  # exec swayidle -w \
+  #          timeout 300 'swaylock -f -c 000000' \
+  #          timeout 600 'swaymsg "output * dpms off"' \
+  #               resume 'swaymsg "output * dpms on"' \
+  #          before-sleep 'swaylock -f -c 000000'
+  #
+  # This will lock your screen after 300 seconds of inactivity, then turn off
+  # your displays after another 300 seconds, and turn your screens back on when
+  # resumed. It will also lock your screen before your computer goes to sleep.
+
+  ### Input configuration
+  #
+  # Example configuration:
+  #
+  #   input "2:14:SynPS/2_Synaptics_TouchPad" {
+  #       dwt enabled
+  #       tap enabled
+  #       natural_scroll enabled
+  #       middle_emulation enabled
+  #   }
+  #
+  # You can get the names of your inputs by running: swaymsg -t get_inputs
+  # Read `man 5 sway-input` for more information about this section.
+  input type:keyboard {
+  xkb_options ctrl:nocaps
+  }
+
+  input type:touchpad {
+  pointer_accel 1.0
+  }
+
+  input type:pointer {
+  pointer_accel 1.0
+  }
+
+  ### Key bindings
+  #
+  # Basics:
+  #
+  # Start a terminal
+  bindsym $mod+Return exec $term
+
+  # Kill focused window
+  bindsym $mod+Shift+q kill
+
+  # Start your launcher
+  # bindsym $mod+d exec $menu
+
+  # Drag floating windows by holding down $mod and left mouse button.
+  # Resize them with right mouse button + $mod.
+  # Despite the name, also works for non-floating windows.
+  # Change normal to inverse to use left mouse button for resizing and right
+  # mouse button for dragging.
+  floating_modifier $mod normal
+
+  # Reload the configuration file
+  bindsym $mod+Shift+c reload
+
+  ## From https://gitlab.com/protesilaos/dotfiles/-/blob/master/sway/.config/sway/config
+  # # NOTE 2021-09-22: This was the default.  I have no idea why a
+  # # keyboard-centric WM would expect you to use the mouse for such a
+  # # task.
+  # bindsym $mod+Delete exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+  set $quit "Exit Sway: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, h[i]bernate-to-windows"
+
+  mode $quit {
+  bindsym l exec swaymsg exit
+  bindsym r exec systemctl reboot
+  bindsym s exec systemctl poweroff
+  bindsym u exec systemctl suspend
+  bindsym i exec systemctl hibernate --boot-loader-entry=auto-windows
+
+  Bindsym Escape mode "default"
+  bindsym Return mode "default"
+  }
+
+  bindsym $mod+Delete mode $quit
+
+  #
+  # Moving around:
+  #
+  # Move your focus around
+  bindsym $mod+$left focus left
+  bindsym $mod+$down focus down
+  bindsym $mod+$up focus up
+  bindsym $mod+$right focus right
+  # Or use $mod+[up|down|left|right]
+  bindsym $mod+Left focus left
+  bindsym $mod+Down focus down
+  bindsym $mod+Up focus up
+  bindsym $mod+Right focus right
+
+  # Or some emacs keys
+  bindsym $mod+f focus right
+  # Move the focused window with the same, but add Shift
+  bindsym $mod+Shift+$left move left
+  bindsym $mod+Shift+$down move down
+  bindsym $mod+Shift+$up move up
+  bindsym $mod+Shift+$right move right
+  # Ditto, with arrow keys
+  bindsym $mod+Shift+Left move left
+  bindsym $mod+Shift+Down move down
+  bindsym $mod+Shift+Up move up
+  bindsym $mod+Shift+Right move right
+
+
+  #
+  # Workspaces:
+  #
+  # Switch to workspace
+  bindsym $mod+1 workspace 1
+  bindsym $mod+2 workspace 2
+  bindsym $mod+3 workspace 3
+  bindsym $mod+4 workspace 4
+  bindsym $mod+5 workspace 5
+  bindsym $mod+6 workspace 6
+  bindsym $mod+7 workspace 7
+  bindsym $mod+8 workspace 8
+  bindsym $mod+9 workspace 9
+  bindsym $mod+0 workspace 10
+  # Move focused container to workspace
+  bindsym $mod+Shift+1 move container to workspace 1
+  bindsym $mod+Shift+2 move container to workspace 2
+  bindsym $mod+Shift+3 move container to workspace 3
+  bindsym $mod+Shift+4 move container to workspace 4
+  bindsym $mod+Shift+5 move container to workspace 5
+  bindsym $mod+Shift+6 move container to workspace 6
+  bindsym $mod+Shift+7 move container to workspace 7
+  bindsym $mod+Shift+8 move container to workspace 8
+  bindsym $mod+Shift+9 move container to workspace 9
+  bindsym $mod+Shift+0 move container to workspace 10
+
+  ## https://gitlab.com/protesilaos/dotfiles/-/blob/master/sway/.config/sway/config
+  #### Workspaces
+  bindsym $mod+Tab workspace next
+  bindsym $mod+Shift+Tab workspace prev
+
+  # Note: workspaces can have any name you want, not just numbers.
+  # We just use 1-10 as the default.
+  #
+  # Layout stuff:
+  #
+  # You can "split" the current object of your focus with
+  # $mod+b or $mod+v, for horizontal and vertical splits
+  # respectively.
+  bindsym $mod+b splith
+  bindsym $mod+v splitv
+
+  # Switch the current container between different layout styles
+  bindsym $mod+s layout stacking
+  bindsym $mod+w layout tabbed
+  bindsym $mod+e layout toggle split
+
+  # Make the current focus fullscreen
+  # bindsym $mod+f fullscreen
+  bindsym $mod+Shift+f11 fullscreen
+
+  # Toggle the current focus between tiling and floating mode
+  bindsym $mod+Shift+space floating toggle
+
+  # Swap focus between the tiling area and the floating area
+  bindsym $mod+space focus mode_toggle
+
+  # Move focus to the parent container
+  bindsym $mod+a focus parent
+  #
+  # Scratchpad:
+  #
+  # Sway has a "scratchpad", which is a bag of holding for windows.
+  # You can send windows there and get them back later.
+
+  # Move the currently focused window to the scratchpad
+  bindsym $mod+Shift+minus move scratchpad
+
+  # Show the next scratchpad window or hide the focused scratchpad window.
+  # If there are multiple scratchpad windows, this command cycles through them.
+  bindsym $mod+minus scratchpad show
+  # Mod+`
+  bindsym $mod+grave scratchpad show
+  #
+  # Resizing containers:
+  #
+  mode "resize" {
+  # left will shrink the containers width
+  # right will grow the containers width
+  # up will shrink the containers height
+  # down will grow the containers height
+  bindsym $left resize shrink width 20px
+  bindsym $down resize grow height 20px
+  bindsym $up resize shrink height 20px
+  bindsym $right resize grow width 20px
+
+  # Ditto, with arrow keys
+  bindsym Left resize shrink width 20px
+  bindsym Down resize grow height 20px
+  bindsym Up resize shrink height 20px
+  bindsym Right resize grow width 20px
+
+  # Return to default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  }
+  bindsym $mod+r mode "resize"
+
+  #
+  # Status Bar:
+  #
+  # Read `man 5 sway-bar` for more information about this section.
+  bar {
+  position top
+
+  # When the status_command prints a new line to stdout, swaybar updates.
+  # The default just shows the current date and time.
+  #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+
+  # Keep in mind that the current directory of this config file is $HOME
+  status_command while ~/.config/sway/status.sh; do sleep 1; done
+
+  colors {
+  statusline #ffffff
+  background #323232
+  inactive_workspace #32323200 #32323200 #5c5c5c
+  }
+
+  font pango:DejaVu Sans Mono 12
+  }
+
+  include /usr/local/etc/sway/config.d/*
+
+  #
+  # Screenshot
+  #
+  bindsym $mod+Shift+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+  bindsym $mod+Shift+o exec grim -g "$(slurp)" -t png - | swappy -f -
+
+  # Gaps
+  # These set the defaults, use swaymsg gaps to set it at runtime
+  gaps inner 0
+  gaps outer 0
+  smart_gaps off
+
+  # Mako
+  exec mako
+#+end_src
+
+* Omnisharp
+
+#+begin_src json :tangle ~/.omnisharp/omnisharp.json
+  {
+          "useGlobalMono": false
+  }
+#+end_src
+
+* Chrome Flags
+
+Used by xdg open and //usr/bin/google-chrome-stable scripts
+
+See [[file:~/projects/me/todo_misc.org::*Linux/Chrome-Emacs(?): Figure out why chrome opens up 2 unnecessary tabs][Linux/Chrome-Emacs(?): Figure out why chrome opens up 2 unnecessary tabs]]
+
+#+begin_src shell :tangle ~/.config/chrome-flags.conf
+  -enable-features=UseOzonePlatform -ozone-platform=wayland
+#+end_src
+
+* Local environment
+
+Added a source to a ~/local_env.sh script in zsh.  For putting local configuration
+
+Put configuration for kestrel on local machine in there.  For example:
+#+begin_src sh
+  #dotnet/kestrel
+  export "Kestrel__Endpoints__Https__Url"="https://localhost:5001"
+  export "Kestrel__Endpoints__Https__Certificate__Path"="/home/trevor/ca/localhost.pfx"
+  export "Kestrel__Endpoints__Https__Certificate__Password"="<cert_pw>"
 #+end_src
