@@ -514,6 +514,24 @@ See [[file:~/projects/me/todo_misc.org::*Linux/Chrome-Emacs(?): Figure out why c
   -enable-features=UseOzonePlatform -ozone-platform=wayland
 #+end_src
 
+* Goddard SNX
+
+** snx.sh scripts
+
+#+begin_src shell :tangle ~/goddard-vpn-connect-snx.sh
+  #!/usr/bin/env bash
+  sudo snx -s vpn.goddardsystems.com -u parsus-ta
+#+end_src
+
+
+** snxrc
+#+begin_src shell :tangle ~/.snxrc
+  debug yes
+  # This was an update because the original vpn server broke
+  server 199.116.133.75
+  username parsus-ta
+#+end_src
+
 * Local environment
 
 Added a source to a ~/local_env.sh script in zsh.  For putting local configuration
@@ -521,7 +539,6 @@ Added a source to a ~/local_env.sh script in zsh.  For putting local configurati
 Put configuration for kestrel on local machine in there.  For example:
 #+begin_src sh
   #dotnet/kestrel
-  export "Kestrel__Endpoints__Https__Url"="https://localhost:5001"
   export "Kestrel__Endpoints__Https__Certificate__Path"="/home/trevor/ca/localhost.pfx"
   export "Kestrel__Endpoints__Https__Certificate__Password"="<cert_pw>"
 #+end_src
