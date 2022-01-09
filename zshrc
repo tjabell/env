@@ -109,7 +109,7 @@ alias -g NF='./*(oc[1])'
 
 # Append "$1" to $PATH when not already in.
 # This function API is accessible to scripts in /etc/profile.d
-# Borrowed form /etc/profile 
+# Borrowed form /etc/profile
 append_path () {
     case ":$PATH:" in
         *:"$1":*)
@@ -283,6 +283,11 @@ append_path ~/.npm-global/bin:$PATH
 
 export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
+
+#Init nvm if present
+if test -f /usr/share/nvm/init-nvm.sh; then
+   source /usr/share/nvm/init-nvm.sh
+fi
 
 # Local configuration
 if test -f ~/local_env.sh; then
