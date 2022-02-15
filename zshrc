@@ -293,3 +293,6 @@ fi
 if test -f ~/local_env.sh; then
    . ~/local_env.sh
 fi
+
+# Firefox
+alias ff='firefox'

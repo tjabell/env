@@ -1,3 +1,6 @@
+;;-*- coding: utf-8; lexical-binding: t; -*-
+#+title: Dot Files Configuration
+#+STARTUP: overview
 * Dot files configuration
 
 Not quite sure what I will do with this yet, but getting started with centralizing configuration here
@@ -543,7 +546,6 @@ Put configuration for kestrel on local machine in there.  For example:
   export "Kestrel__Endpoints__Https__Certificate__Password"="<cert_pw>"
 #+end_src
 
-
 * Davfs2
 
 Used for dotcms mounting webdav dirs
@@ -711,4 +713,40 @@ webdav secrets /etc/davfs2/secrets
   # /home/otto/.davfs2/certs/private/otto.crt  geheim
   # otto_private.crt              "this is extraordinary secret"
   # "otto private.crt"            this\ is\ secret,\ too.
+#+end_src
+
+* EXWM/.xinitrc
+
+#+begin_src conf :tangle ~/.xinitrc
+  # Use caps as ctrl
+  setxkbmap -option ctrl:nocaps
+
+  # Disable access control for the current user.
+  xhost +SI:localuser:$USER
+
+  # Make Java applications aware this is a non-reparenting window manager.
+  export _JAVA_AWT_WM_NONREPARENTING=1
+
+  # Set default cursor.
+  xsetroot -cursor_name left_ptr
+
+  # Set keyboard repeat rate.
+  xset r rate 200 60
+  xset b off
+
+  xinput --set-prop "Synaptics TM3276-031" "libinput Accel Speed" 1
+  xinput --set-prop "TPPS/2 IBM TrackPoint" "libinput Accel Speed" 1
+
+  # Uncomment the following block to use the exwm-xim module.
+  #export XMODIFIERS=@im=exwm-xim
+  #export GTK_IM_MODULE=xim
+  #export QT_IM_MODULE=xim
+  #export CLUTTER_IM_MODULE=xim
+
+  # Finally start with exwm enabled
+  #exec emacs -mm
+  exec emacs -mm --debug-init
+
+  #exec fluxbox
+
 #+end_src
