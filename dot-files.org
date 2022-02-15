@@ -717,7 +717,20 @@ webdav secrets /etc/davfs2/secrets
 
 * EXWM/.xinitrc
 
-#+begin_src conf :tangle ~/.xinitrc
+Decides if we're on the carbon or not, if so we run fluxbox for X.  Otherwise use exwm.  Maybe there's no reason we couldnt use exwm on both?
+
+#+name: wm-to-start
+#+begin_src emacs-lisp
+(if (string-equal system-name "trevor-laptop-x1") "fluxbox" "emacs -mm --debug-init")
+#+end_src
+
+#+RESULTS: wm-to-start
+: fluxbox
+
+#+RESULTS:
+: trevor-laptop-x1
+
+#+begin_src conf :tangle ~/.xinitrc :noweb yes
   # Use caps as ctrl
   setxkbmap -option ctrl:nocaps
 
@@ -745,8 +758,7 @@ webdav secrets /etc/davfs2/secrets
 
   # Finally start with exwm enabled
   #exec emacs -mm
-  exec emacs -mm --debug-init
-
+  ##exec emacs -mm --debug-init
   #exec fluxbox
-
+  exec <<wm-to-start()>>
 #+end_src
