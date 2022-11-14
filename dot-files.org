@@ -990,9 +990,10 @@ webdav secrets /etc/davfs2/secrets
 
 
   # npm global config
-  export NPM_PACKAGES="$HOME/.npm-global/"
-  append_path ~/.npm-global/bin:$PATH
-  export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+  # deprecated in favor of nvm
+  ## export NPM_PACKAGES="$HOME/.npm-global/"
+  ## append_path ~/.npm-global/bin:$PATH
+  ## export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
   export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
   export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode
