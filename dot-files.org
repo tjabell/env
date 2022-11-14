@@ -874,6 +874,7 @@ webdav secrets /etc/davfs2/secrets
   alias xclips='xclip -selection clipboard'
   alias noderl="env NODE_NO_READLINE=1 rlwrap node"
   alias cl=catls
+  alias vpn=nordvpn
 
   function tm {
     TMUXNAME=${1:-"default"}
