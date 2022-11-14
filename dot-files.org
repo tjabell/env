@@ -826,7 +826,7 @@ webdav secrets /etc/davfs2/secrets
   append_path () {
       case ":$PATH:" in
           ,*:"$1":*)
-              ;;
+          ;;
           ,*)
               PATH="${PATH:+$PATH:}$1"
       esac
@@ -842,7 +842,7 @@ webdav secrets /etc/davfs2/secrets
 
   # Rust Paths
   if [ -f ~/.cargo/env ]; then
-     source ~/.cargo/env
+      source ~/.cargo/env
   fi
 
   # Python Paths
@@ -877,29 +877,29 @@ webdav secrets /etc/davfs2/secrets
   alias vpn=nordvpn
 
   function tm {
-    TMUXNAME=${1:-"default"}
+      TMUXNAME=${1:-"default"}
 
-    if tmux ls | grep "^$TMUXNAME:"; then
-      tmux attach -d -t $TMUXNAME
-    else
-      tmux new -s $TMUXNAME
-    fi
+      if tmux ls | grep "^$TMUXNAME:"; then
+          tmux attach -d -t $TMUXNAME
+      else
+          tmux new -s $TMUXNAME
+      fi
   }
 
   # catls - either list a directory or cat a file
   catls() {
-    [[ -f "$1" ]] && cat "$1" || ls "$1";
+      [[ -f "$1" ]] && cat "$1" || ls "$1";
   }
 
   mkcd () {
-    case "$1" in
-      ,*/..|*/../) cd -- "$1";; # that doesn't make any sense unless the directory already exists
-      /*/../*) (cd "${1%/../*}/.." && mkdir -p "./${1##*/../}") && cd -- "$1";;
-      /*) mkdir -p "$1" && cd "$1";;
-      ,*/../*) (cd "./${1%/../*}/.." && mkdir -p "./${1##*/../}") && cd "./$1";;
-      ../*) (cd .. && mkdir -p "${1#.}") && cd "$1";;
-      ,*) mkdir -p "./$1" && cd "./$1";;
-    esac
+      case "$1" in
+          ,*/..|*/../) cd -- "$1";; # that doesn't make any sense unless the directory already exists
+          /*/../*) (cd "${1%/../*}/.." && mkdir -p "./${1##*/../}") && cd -- "$1";;
+          /*) mkdir -p "$1" && cd "$1";;
+          ,*/../*) (cd "./${1%/../*}/.." && mkdir -p "./${1##*/../}") && cd "./$1";;
+          ../*) (cd .. && mkdir -p "${1#.}") && cd "$1";;
+          ,*) mkdir -p "./$1" && cd "./$1";;
+      esac
   }
 
   if command -v keychain; then
@@ -1001,12 +1001,12 @@ webdav secrets /etc/davfs2/secrets
 
   #Init nvm if present
   if test -f /usr/share/nvm/init-nvm.sh; then
-     source /usr/share/nvm/init-nvm.sh
+      source /usr/share/nvm/init-nvm.sh
   fi
 
   # Local configuration
   if test -f ~/local_env.sh; then
-     . ~/local_env.sh
+      . ~/local_env.sh
   fi
 
   # Firefox
