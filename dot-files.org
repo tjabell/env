@@ -708,7 +708,7 @@ webdav secrets /etc/davfs2/secrets
   # "otto private.crt"            this\ is\ secret,\ too.
 #+end_src
 
-* zsh/shell
+* TODO zsh/shell
 
 #+begin_src shell :tangle ~/.zshrc
   [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
@@ -790,6 +790,11 @@ webdav secrets /etc/davfs2/secrets
   plugins=(git z)
 
   source $ZSH/oh-my-zsh.sh
+
+  # My zsh plugins
+  if [ -f $HOME/hacking/jq-zsh-plugin/jq.plugin.zsh ]; then
+     source $HOME/hacking/jq-zsh-plugin/jq.plugin.zsh
+  fi
 
   # User configuration
   SAVEHIST=10000
@@ -1012,7 +1017,12 @@ webdav secrets /etc/davfs2/secrets
   # Firefox
   alias ff='firefox'
 
+  export CLR_ICU_VERSION_OVERRIDE=72.1
+  export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=0
 
+  if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+    exec ~/start-sway.sh
+  fi
 #+end_src
 
 * Generate NPM/.npmrc
