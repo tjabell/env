@@ -248,6 +248,8 @@ Not quite sure what I will do with this yet, but getting started with centralizi
   output HDMI-A-2 resolution 1920x1200 position -1920,0
   output HDMI-A-2 scale 1
 
+  output HEADLESS-1 resolution 2388x1668@59.999HZ position 1200,0
+  output HEADLESS-1 scale 1
 
   ### Idle configuration
   #
@@ -552,7 +554,7 @@ Used for dotcms mounting webdav dirs
 
 sudo file tangled in /etc/davfs2/davfs2.conf
 #+begin_src conf
-        
+
   # davfs2 configuration file 2020-08-03
   # version 13
   # ------------------------------------
