@@ -287,7 +287,7 @@ Not quite sure what I will do with this yet, but getting started with centralizi
   }
 
   input type:pointer {
-  pointer_accel 1.0
+  pointer_accel 0.5
   }
 
   ### Key bindings
