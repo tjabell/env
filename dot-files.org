@@ -499,6 +499,8 @@ Not quite sure what I will do with this yet, but getting started with centralizi
 
   # Mako
   exec mako
+
+  exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 #+end_src
 
 * Omnisharp
