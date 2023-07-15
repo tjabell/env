@@ -120,12 +120,15 @@ append_path () {
 }
 
 # Android paths
-export ANDROID_HOME=$HOME/Android/Sdk
-# append_path $ANDROID_HOME/emulator
-# append_path $ANDROID_HOME/tools
-# append_path $ANDROID_HOME/tools/bin
-# append_path $ANDROID_HOME/platform-tools
+export ANDROID_HOME=/home/trevor/Android/Sdk
+#export ANDROID_HOME=/opt/android-sdk
+append_path $ANDROID_HOME/cmdline-tools/latest/bin/
+append_path $ANDROID_HOME/build-tools/34.0.0/
+append_path $ANDROID_HOME/platform-tools/
+append_path $ANDROID_HOME/emulator/
 
+# Flutter
+append_path /opt/flutter/bin/
 
 # Rust Paths
 if [ -f ~/.cargo/env ]; then
