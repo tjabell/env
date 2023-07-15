@@ -198,7 +198,7 @@ Not quite sure what I will do with this yet, but getting started with centralizi
 
 * Sway
 
-#+begin_src conf-unix
+#+begin_src conf-unix :tangle ~/.config/sway/config
   # Default config for sway
   #
   # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -248,8 +248,9 @@ Not quite sure what I will do with this yet, but getting started with centralizi
   output HDMI-A-2 resolution 1920x1200 position -1920,0
   output HDMI-A-2 scale 1
 
-  output HEADLESS-1 resolution 2388x1668@59.999HZ position 1200,0
-  output HEADLESS-1 scale 1
+  #exec swaymsg create_output
+  #exec swaymsg output HEADLESS-1 resolution "2388x1668@59.999Hz"
+  #exec swaymsg create_output HEADLESS-1 scale 1
 
   ### Idle configuration
   #
@@ -490,7 +491,9 @@ Not quite sure what I will do with this yet, but getting started with centralizi
   #
   bindsym $mod+Shift+p exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
   bindsym $mod+Shift+o exec grim -g "$(slurp)" -t png - | swappy -f -
-  bindsym $mod+Shift+i exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
+  bindsym $mod+Shift+i exec grim -t png
+  #bindsym $mod+Shift+i exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy           
+  #bindsym $mod+Shift+i exec grim -g "$(slurp -o)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy 
 
   # Gaps
   # These set the defaults, use swaymsg gaps to set it at runtime
@@ -885,6 +888,10 @@ webdav secrets /etc/davfs2/secrets
   alias noderl="env NODE_NO_READLINE=1 rlwrap node"
   alias cl=catls
   alias vpn=nordvpn
+  alias v='nordvpn connect us'
+  alias vd="nordvpn disconnect"
+  alias beep="notify-send"
+  alias update-aura="sudo aura -Ayukxc --noconfirm"
 
   function tm {
       TMUXNAME=${1:-"default"}
