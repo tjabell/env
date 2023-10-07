@@ -248,6 +248,7 @@ Not quite sure what I will do with this yet, but getting started with centralizi
   output HDMI-A-2 resolution 1920x1200 position -1920,0
   output HDMI-A-2 scale 1
 
+  #output DP-2 resolution 1920x1080 position -3840,0
   output DP-2 resolution 1920x1080 transform 90
 
   #exec swaymsg create_output
