@@ -242,11 +242,13 @@ Not quite sure what I will do with this yet, but getting started with centralizi
   #
   # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-  output eDP-1 resolution 3840x2160 position 0,0
-  output eDP-1 scale 1
+  #output eDP-1 resolution 3840x2160 position 0,0
+  #output eDP-1 scale 1
 
   output HDMI-A-2 resolution 1920x1200 position -1920,0
   output HDMI-A-2 scale 1
+
+  output DP-2 resolution 1920x1080 transform 90
 
   #exec swaymsg create_output
   #exec swaymsg output HEADLESS-1 resolution "2388x1668@59.999Hz"
@@ -716,7 +718,7 @@ webdav secrets /etc/davfs2/secrets
   # "otto private.crt"            this\ is\ secret,\ too.
 #+end_src
 
-* TODO zsh/shell
+* zsh/shell
 
 #+begin_src shell :tangle ~/.zshrc
   [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
@@ -891,7 +893,8 @@ webdav secrets /etc/davfs2/secrets
   alias v='nordvpn connect us'
   alias vd="nordvpn disconnect"
   alias beep="notify-send"
-  alias update-aura="sudo aura -Ayukxc --noconfirm"
+  alias aura-up="sudo aura -Ayukxc --noconfirm"
+  alias myaws='aws --no-cli-pager --profile AWSAdministratorAccess-109948611280'
 
   function tm {
       TMUXNAME=${1:-"default"}

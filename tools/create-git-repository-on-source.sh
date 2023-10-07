@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Usage ./create-git-repository-on-source.sh projects/gsi-regression-tests
+# Then set origin to https://source.trevorabell.me/git/projects/gsi-regression-tests.git
 REPO=$1
 
 if [ -z "$REPO" ]
