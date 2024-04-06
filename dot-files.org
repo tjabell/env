@@ -1037,6 +1037,9 @@ webdav secrets /etc/davfs2/secrets
   # Firefox
   alias ff='firefox'
 
+  #anyconnect
+  alias anyconnect=/opt/cisco/secureclient/vpnui
+
   export CLR_ICU_VERSION_OVERRIDE=72.1
   export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=0
 
