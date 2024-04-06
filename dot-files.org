@@ -556,8 +556,9 @@ Added a source to a ~/local_env.sh script in zsh.  For putting local configurati
 Put configuration for kestrel on local machine in there.  For example:
 #+begin_src sh
   #dotnet/kestrel
-  export "Kestrel__Endpoints__Https__Certificate__Path"="/home/trevor/ca/localhost.pfx"
-  export "Kestrel__Endpoints__Https__Certificate__Password"="<cert_pw>"
+  export "Kestrel__Endpoints__Https__Url"="https://localhost:5001"
+  export "Kestrel__Endpoints__Https__Certificate__Path"="/home/trevor/ca/localhost.2023.pfx"
+  export "Kestrel__Endpoints__Https__Certificate__Password"="<certpw>"
 #+end_src
 
 * Davfs2
